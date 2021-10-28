@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
-    
-    
+    <a style="position: fixed; top: 0; left: 0; font-size: 25px;" href="javascript:window.open('','_self').close();">close</a>
     <div style="visibility: hidden; position: absolute;" id="webcam-container"></div>
     <div id="label-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -66,6 +66,7 @@
             document.querySelector("body").style.position = "absolute";
             document.querySelector("body").style.left = "45%";
             document.querySelector("body").style.bottom = "45%";
+            //표정에 따른 텍스트 출력
             if(prediction[0].className == "happiness" && prediction[0].probability.toFixed(2) > 0.80) {
                 labelContainer.childNodes[0].innerHTML = "행복";
             } else if (prediction[1].className == "anger" && prediction[1].probability.toFixed(2) > 0.80) {
@@ -75,7 +76,13 @@
             }
     
         }
+        
+        //웹캠 실행
         init();
+        //3초후 자동 꺼짐
+        //opener=self;
+        //setTimeout('self.close()',3000); 
+        
     </script>
        
 </body>
